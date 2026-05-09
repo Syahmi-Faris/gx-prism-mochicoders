@@ -10,7 +10,16 @@ export type Captured = {
   needsReview?: boolean;
 };
 
+export type User = {
+  name: string;
+  email: string;
+  joinDate: string;
+  membership: string;
+};
+
 type State = {
+  user: User;
+  resilienceScore: number;
   recoveryPocket: number;
   recoveryNote: string;
   savings: number;
@@ -26,6 +35,13 @@ type State = {
 };
 
 export const useApp = create<State>((set) => ({
+  user: {
+    name: "Aiman Hakim",
+    email: "aimanhakim@email.com",
+    joinDate: "Mar 2026",
+    membership: "GX Prism Member",
+  },
+  resilienceScore: 72,
   recoveryPocket: 20,
   recoveryNote: "Saved from 1 avoided BNPL impulse",
   savings: 340,
