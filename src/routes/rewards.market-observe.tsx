@@ -24,22 +24,22 @@ function MarketObserve() {
   return (
     <div className="px-5 pt-6 space-y-4">
       <header className="flex items-center gap-2">
-        <Link to="/rewards" className="h-9 w-9 rounded-xl bg-surface grid place-items-center"><ChevronLeft size={16}/></Link>
+        <Link to="/rewards" className="h-9 w-9 rounded-xl bg-card grid place-items-center"><ChevronLeft size={16}/></Link>
         <div>
           <p className="text-xs text-muted-foreground">Beginner-friendly · Educational</p>
           <h1 className="text-2xl font-semibold">Market Observe</h1>
         </div>
       </header>
 
-      <Card className="p-3 bg-prism/10 border-prism/30 flex items-start gap-2">
-        <Info size={14} className="text-prism mt-0.5"/>
+      <Card className="p-3 bg-primary/10 border-primary/30 flex items-start gap-2">
+        <Info size={14} className="text-primary mt-0.5"/>
         <p className="text-[12px] text-muted-foreground leading-snug">
           Learn before you invest. We never push "Buy Now" — only suitability based on your resilience milestones.
         </p>
       </Card>
 
       {assets.map((a) => (
-        <Card key={a.name} className="p-4 bg-surface border-white/10">
+        <Card key={a.name} className="p-4 bg-card border-border">
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-base font-semibold">{a.name}</p>
@@ -49,7 +49,7 @@ function MarketObserve() {
               <p className="text-sm font-medium text-mint">{a.trend}</p>
               <Badge className={`mt-1 border-0 text-[10px] ${
                 a.riskTone === "mint" ? "bg-mint/20 text-mint" :
-                a.riskTone === "amber" ? "bg-amber/20 text-amber" : "bg-prism/20 text-prism"
+                a.riskTone === "amber" ? "bg-amber/20 text-amber" : "bg-primary/15 text-primary"
               }`}>{a.risk} risk</Badge>
             </div>
           </div>

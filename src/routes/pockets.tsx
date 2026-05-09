@@ -22,9 +22,9 @@ function Pockets() {
       <PocketCard icon={LifeBuoy} tone="prism" name="Recovery Pocket" balance={recoveryPocket} goal={100} sub={recoveryNote}/>
       <PocketCard icon={Shield} tone="amber" name="Emergency Buffer" balance={emergency} goal={1000} sub="Target: 1 month essentials"/>
 
-      <Card className="p-4 bg-surface border-white/10">
+      <Card className="p-4 bg-card border-border">
         <div className="flex items-center gap-2 mb-3">
-          <CalendarClock className="text-prism" size={16}/>
+          <CalendarClock className="text-primary" size={16}/>
           <p className="text-sm font-medium">Payday Split</p>
           <span className="ml-auto text-[11px] text-muted-foreground">Next: 28th</span>
         </div>
@@ -37,13 +37,13 @@ function Pockets() {
       </Card>
 
       <Link to="/rewards">
-        <Card className="p-4 bg-surface border-white/10 flex items-center gap-3">
+        <Card className="p-4 bg-card border-border flex items-center gap-3">
           <div className="h-10 w-10 rounded-xl gradient-prism grid place-items-center text-primary-foreground"><TrendingUp size={18}/></div>
           <div className="flex-1">
             <p className="text-sm font-medium">Rewards & Growth</p>
             <p className="text-[11px] text-muted-foreground">Resilience streaks, cashback, Market Observe</p>
           </div>
-          <span className="text-prism text-sm">→</span>
+          <span className="text-primary text-sm">→</span>
         </Card>
       </Link>
     </div>
@@ -52,9 +52,9 @@ function Pockets() {
 
 function PocketCard({ icon: Icon, tone, name, balance, goal, sub }: any) {
   const pct = Math.min(100, (balance / goal) * 100);
-  const toneCls = tone === "mint" ? "text-mint" : tone === "amber" ? "text-amber" : "text-prism";
+  const toneCls = tone === "mint" ? "text-mint" : tone === "amber" ? "text-amber" : "text-primary";
   return (
-    <Card className="p-4 bg-surface border-white/10">
+    <Card className="p-4 bg-card border-border">
       <div className="flex items-center gap-3">
         <div className={`h-10 w-10 rounded-xl bg-accent grid place-items-center ${toneCls}`}><Icon size={18}/></div>
         <div className="flex-1">
