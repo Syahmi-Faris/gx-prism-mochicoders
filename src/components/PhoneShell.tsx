@@ -1,6 +1,6 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { Home, ScanLine, Brain, PiggyBank, LineChart, ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useState, type ReactNode } from "react";
+import { Home, ScanLine, Brain, PiggyBank, LineChart } from "lucide-react";
+import { useEffect, type ReactNode } from "react";
 import { TopBar } from "./TopBar";
 import { useTheme } from "@/lib/theme";
 
@@ -19,62 +19,15 @@ function isActive(pathname: string, to: string) {
 export function PhoneShell({ children }: { children: ReactNode }) {
   const loc = useLocation();
   const init = useTheme((s) => s.init);
-  const [collapsed, setCollapsed] = useState(false);
   useEffect(() => { init(); }, [init]);
 
   return (
-    <div className="min-h-screen flex items-stretch md:items-center justify-center md:py-8 md:gap-6">
-      {/* Desktop sidebar */}
-      <aside
-        className={`hidden md:flex flex-col h-[900px] rounded-[2rem] border border-border bg-card shadow-elevated p-4 transition-all duration-300 ${
-          collapsed ? "w-[76px]" : "w-[220px]"
-        }`}
-      >
-        <div className="flex items-center justify-between gap-2 px-1">
-          <Link to="/" className="flex items-center gap-2 py-2 overflow-hidden">
-            <div className="h-8 w-8 shrink-0 rounded-lg gradient-prism grid place-items-center text-primary-foreground text-xs font-bold shadow-soft">GX</div>
-            {!collapsed && <span className="font-semibold tracking-tight">Prism</span>}
-          </Link>
-          <button
-            onClick={() => setCollapsed((c) => !c)}
-            aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-            className="h-7 w-7 shrink-0 grid place-items-center rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground transition"
-          >
-            {collapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
-          </button>
-        </div>
-        <nav className="mt-4 flex flex-col gap-1">
-          {tabs.map(({ to, label, icon: Icon }) => {
-            const active = isActive(loc.pathname, to);
-            return (
-              <Link
-                key={to}
-                to={to}
-                title={collapsed ? label : undefined}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition ${
-                  active
-                    ? "gradient-prism text-primary-foreground shadow-soft font-medium"
-                    : "text-muted-foreground hover:bg-accent hover:text-foreground"
-                } ${collapsed ? "justify-center" : ""}`}
-              >
-                <Icon size={16} className="shrink-0" />
-                {!collapsed && <span>{label}</span>}
-              </Link>
-            );
-          })}
-        </nav>
-        {!collapsed && (
-          <p className="mt-auto text-[10px] text-muted-foreground px-2">GX Prism · Prototype</p>
-        )}
-      </aside>
-
-      {/* Phone frame */}
+    <div className="min-h-screen flex items-stretch md:items-center justify-center md:py-8">
       <div className="w-full md:max-w-[440px] md:rounded-[2.5rem] md:border md:border-border bg-background relative overflow-hidden md:h-[900px] flex flex-col shadow-elevated">
         <TopBar />
-        <div className="flex-1 overflow-y-auto pb-24 md:pb-6 scroll-smooth">{children}</div>
+        <div className="flex-1 overflow-y-auto pb-24 scroll-smooth">{children}</div>
 
-        {/* Mobile bottom nav */}
-        <nav className="md:hidden absolute bottom-0 inset-x-0 glass border-t border-border px-1.5 py-1.5 flex justify-between">
+        <nav className="absolute bottom-0 inset-x-0 glass border-t border-border px-1.5 py-1.5 flex justify-between">
           {tabs.map(({ to, label, icon: Icon }) => {
             const active = isActive(loc.pathname, to);
             return (
