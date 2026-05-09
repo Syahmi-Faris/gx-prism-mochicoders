@@ -1,84 +1,90 @@
+# GX Prism — GX Bank-Inspired Refresh
 
-# GX Prism — Behavioural Financial Resilience Prototype
+Refactor visual system to a white-first, purple-accent fintech look (GX Bank style), add a top bar (logo + theme toggle + notifications + profile), expand bottom nav to surface Market, and make Profile a real interactive screen. All existing behavioural features (Smart Capture, Insights, Intercept, Pockets, Recovery, Market Observe) stay intact.
 
-A mobile-first fintech prototype for Malaysian youth that captures spending effortlessly, surfaces behavioural insights, intercepts impulses, and rebuilds savings — built as a clickable demo for judges/investors.
+## 1. Theme system (light-first, purple accent)
 
-Note: this is a frontend-only prototype with mocked data and simulated AI states (no backend, no real bank sync). All flows are interactive but stateful only in-memory.
+Rewrite `src/styles.css` tokens:
 
-## Visual identity
+- Light mode (default, applied to `<html>`):
+  - `--background`: near-white (oklch ~0.99)
+  - `--foreground`: deep charcoal
+  - `--card`: pure white with soft shadow token `--shadow-soft`
+  - `--muted`: light gray surface
+  - `--primary`: GX purple (`oklch(0.55 0.22 290)`)
+  - `--primary-glow`: lighter violet for gradient end
+  - `--gradient-prism`: `linear-gradient(135deg, var(--primary), var(--primary-glow))`
+  - Borders: subtle gray (`oklch(0.92 0 0)`)
+- Dark mode (`.dark` on `<html>`): keep current midnight base but recalibrated so purple highlights pop; cards use elevated charcoal not pure black.
+- Update `.glass` utility to adapt: white/blur in light, dark translucent in dark.
+- Replace all hardcoded `text-white`, `bg-black`, `border-white/10` etc. across routes with semantic tokens (`bg-card`, `text-foreground`, `border-border`).
+- Soften radii (`--radius: 1rem`) and add `--shadow-soft`, `--shadow-elevated` tokens for cards.
 
-- Dark premium fintech palette: deep midnight base, soft lilac/violet primary (the "Prism" accent), gradient highlights for AI moments, mint for positive/savings, amber for risk.
-- Typography: clean geometric sans (display) + neutral sans (body).
-- Card-based, generous spacing, subtle glassmorphism for AI surfaces, micro-animations for "AI thinking" moments.
+## 2. Theme toggle
 
-## App structure (bottom tab nav, 5 tabs)
+- New `src/lib/theme.ts`: tiny Zustand (or `useState` + `localStorage`) store: `theme: 'light' | 'dark'`, `toggle()`. On mount, sync `document.documentElement.classList`.
+- `src/components/ThemeToggle.tsx`: icon button, Sun/Moon (lucide), framer-motion crossfade. Default = light.
 
-```
-Home  |  Smart Capture  |  Insights  |  Intercept  |  Pockets
-                          (Rewards & Growth accessible from Home + Pockets)
-```
+## 3. Top bar
 
-### 1. Home
-- Greeting + Financial Overview card (balance, this month spend, projected balance)
-- Safe-to-Spend hero ("You can safely spend RM42 today")
-- Recovery Pocket mini card — preloaded **RM20** · "Saved from 1 avoided BNPL impulse"
-- Recent Activity (processed insights) with helper: *"Auto-sync, screenshot scan, voice log, and quick cash capture."*
-- Primary CTA: **+ Smart Capture**
+New `src/components/TopBar.tsx` rendered inside `PhoneShell` above content:
 
-### 2. Smart Capture
-Tabs: Screenshot Scan · Voice Log · Quick Cash · Recently Captured
-- **Screenshot Scan**: upload tile → simulated AI processing animation → result card: "4 transactions detected · 3 auto-categorized · 1 requires review" with check icons + amber review flag.
-- **Voice Log**: large mic button with 4 states (Idle / Listening / Processing / Captured), CTA "Tap to Speak", helper *Try saying: "RM8 nasi lemak."*
-- **Quick Cash**: ultra-minimal `[Category ▾] [RM Amount] [Add]`
-- **Recently Captured**: raw newly captured list, visually distinct (lighter cards, "new" pill) vs Home's processed activity.
+- Left: "GX" prism mark + wordmark "Prism"
+- Right (icon buttons): ThemeToggle, Bell (notifications — opens a simple Sheet listing recent intercepts/insights from store), Avatar (links to `/profile`)
+- Sticky, glass background, subtle bottom border.
 
-### 3. Behaviour Insights
-- Spending Patterns chart (week/month toggle)
-- AI Recommendation cards, each with contextual actions:
-  - "You overspend on food delivery during exam week." → **[Set Limit] [Turn On Intercept]**
-  - "Late-night purchases above RM80 trend up." → **[Create Buffer] [View Pattern]**
-- Monthly behaviour summary (10-second overview)
+## 4. Navigation refresh
 
-### 4. Impulse Intercept
-Multi-step modal flow triggered by a demo "Simulate risky purchase" button + a Risk Alerts list.
-- **Step 1 — Risk Detection**: "Late-night spending spike detected"
-- **Step 2 — Consequence Preview**: "This may reduce your weekly essentials budget by RM32"
-- **Step 3 — Decision**: [Delay Purchase] [Reduce Amount] [Proceed Anyway]
-- **Step 4 — Recovery Action**: "Redirect saved RM20 into Recovery Pocket?" → success state updates Pocket balance.
-- Stepper UI at top, behavioural-coaching tone throughout.
+Update `PhoneShell` bottom nav to 6 tabs (Intercept removed from bar — still reachable from Insights cards & Home alerts, since intercept is modal/contextual):
 
-### 5. Pockets
-- Savings Pocket · Recovery Pocket · Emergency Buffer · Payday Split
-- Each as a card with progress ring, balance, recent contributions, quick actions.
-- Payday Split visualizer (Essentials / Daily / Savings / Emergency bars).
+`Home · Capture · Insights · Pockets · Market · Profile`
 
-### Rewards & Growth (sub-page from Home)
-- Resilience Streaks (current streak + calendar dots)
-- Cashback Rewards
-- **Market Observe** (new):
-  - Mini charts: Gold · Index Funds · Low-Risk Funds · Blue-Chip Stocks
-  - Insight cards e.g. *"Gold has shown stable growth over the past 6 months."*
-  - Risk badge (Low / Med / High) + Suitability line ("Suitable after RM500 emergency savings milestone")
-  - Actions: **[View Chart] [Learn Why] [Check Suitability] [Explore Fund] [Add to Growth Plan]** — strictly educational, no "Buy Now".
+- Icons (lucide): Home, ScanLine, Brain, PiggyBank, LineChart, User
+- Active state: purple gradient pill + white icon, label in primary
+- Inactive: muted-foreground
+- Responsive: at ≥768px, optional collapsible left sidebar variant using shadcn sidebar; mobile keeps bottom bar
+- Move Intercept entry: keep `/intercept` route, surface as a prominent "Active Intercepts" card on Home and a "Turn on Intercept" CTA on Insights (already present)
 
-## Naming (consumer-friendly)
-Smart Capture · Behaviour Insights · Impulse Intercept · Pockets · Rewards (no "Layer" terminology anywhere).
+## 5. Market tab
 
-## Tech approach
-- TanStack Start file routes: `/`, `/capture`, `/insights`, `/intercept`, `/pockets`, `/rewards`, `/rewards/market-observe`.
-- Shared mobile shell in `__root.tsx` (max-w phone frame on desktop, full-bleed on mobile) with bottom tab bar.
-- shadcn/ui primitives (Card, Tabs, Dialog, Progress, Badge, Button) themed via `src/styles.css` tokens.
-- Recharts for sparkline / mini market charts.
-- framer-motion for AI-processing pulse, mic state transitions, and Intercept step transitions.
-- Zustand (lightweight) for in-memory state: pocket balances, captured items, intercept outcome → so demo actions visibly update the UI (e.g. Recovery Pocket grows after Intercept).
-- All data is mock/seeded; no backend.
+Promote existing `rewards.market-observe.tsx` content to a top-level route `src/routes/market.tsx`:
 
-## Build order
-1. Theme tokens + mobile shell + bottom nav + routes scaffolding.
-2. Home dashboard with seeded data.
-3. Smart Capture (4 sub-views with simulated AI states).
-4. Behaviour Insights with actionable cards.
-5. Impulse Intercept 4-step flow + state wiring to Recovery Pocket.
-6. Pockets page.
-7. Rewards & Growth + Market Observe.
-8. Polish: animations, empty/loading states, judge-demo seed data pass.
+- Mini charts (Gold, Index, Low-Risk, Blue-Chip) — reuse current Recharts setup
+- Investment summary cards with risk badges (Low/Med) and suitability line ("Suitable for beginners building emergency buffer")
+- Educational CTAs only ("Learn more"), no Buy
+- Keep `/rewards` for Streaks + Cashback; link to Market from Rewards as secondary entry
+
+## 6. Profile screen
+
+New `src/routes/profile.tsx`:
+
+- Header: avatar (initials gradient), name "Aiman Hakim", email "aimanhakim@email.com"
+- Account card: Membership "GX Prism Member", Joined "Mar 2026", Resilience Score (computed from store: intercepts + recoveryPocket → 0–100)
+- Settings list (shadcn): Edit Profile, Notification Preferences, Security Settings, Theme Preferences (rows open simple sheets / toasts — prototype-level)
+- Danger zone: "Delete Account" red-outline button → AlertDialog confirm ("Cancel" / "Delete")
+- All state local/mock; no backend
+
+Add `user` slice to `src/lib/store.ts` (name, email, joinDate, avatar seed) so TopBar avatar and Profile read same source.
+
+## 7. Visual polish pass per route
+
+Re-skin existing routes to white-surface cards with soft shadows, purple accents, and consistent typography scale. No functional changes to capture/insights/intercept/pockets logic.
+
+## 8. Responsive
+
+- Phone shell stays centered with rounded frame on desktop ≥768px
+- Top bar + bottom nav both sticky inside the frame
+- Tablet/desktop demo view: frame scales; sidebar variant optional follow-up
+
+## Technical notes
+
+- Files created: `src/components/TopBar.tsx`, `src/components/ThemeToggle.tsx`, `src/lib/theme.ts`, `src/routes/market.tsx`, `src/routes/profile.tsx`
+- Files edited: `src/styles.css` (token rewrite), `src/components/PhoneShell.tsx` (TopBar + 6-tab nav), `src/lib/store.ts` (user slice, resilience score selector), all `src/routes/*.tsx` (token swap, no logic change), `src/routes/__root.tsx` (apply theme class on mount)
+- Keep `rewards.market-observe.tsx` as alias re-export from `market.tsx` to avoid breaking existing links, or redirect.
+- No new deps; use existing framer-motion, recharts, shadcn, lucide.
+
+## Out of scope
+
+- Real auth / persistence
+- Real notification feed beyond mock list
+- Sidebar variant (mention as future; bottom nav covers all required viewports for demo)
