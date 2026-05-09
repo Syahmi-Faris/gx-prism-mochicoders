@@ -47,9 +47,46 @@
   --color-chart-5: var(--chart-5);
 }
 
+/* LIGHT (default) — GX Bank inspired: white-first, purple accent */
 :root {
   --radius: 1rem;
-  /* Deep midnight base with lilac/violet prism accents */
+  --background: oklch(0.99 0.005 290);
+  --foreground: oklch(0.18 0.02 280);
+  --surface: oklch(0.98 0.008 290);
+  --surface-2: oklch(0.96 0.01 290);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 280);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 280);
+  --primary: oklch(0.55 0.22 295);
+  --primary-foreground: oklch(0.99 0.005 290);
+  --prism: oklch(0.55 0.22 295);
+  --prism-2: oklch(0.62 0.22 320);
+  --secondary: oklch(0.96 0.01 290);
+  --secondary-foreground: oklch(0.18 0.02 280);
+  --muted: oklch(0.96 0.008 290);
+  --muted-foreground: oklch(0.48 0.02 280);
+  --accent: oklch(0.95 0.03 295);
+  --accent-foreground: oklch(0.3 0.12 295);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0.005 0);
+  --border: oklch(0.9 0.01 290);
+  --input: oklch(0.92 0.01 290);
+  --ring: oklch(0.55 0.22 295);
+  --mint: oklch(0.62 0.16 165);
+  --mint-foreground: oklch(0.99 0.005 165);
+  --amber: oklch(0.65 0.16 60);
+  --amber-foreground: oklch(0.99 0.005 60);
+  --chart-1: oklch(0.55 0.22 295);
+  --chart-2: oklch(0.62 0.16 165);
+  --chart-3: oklch(0.7 0.16 60);
+  --chart-4: oklch(0.62 0.22 320);
+  --chart-5: oklch(0.55 0.16 220);
+  --shadow-soft: 0 1px 2px oklch(0.3 0.05 290 / 0.04), 0 8px 24px -8px oklch(0.3 0.05 290 / 0.08);
+  --shadow-elevated: 0 12px 40px -12px oklch(0.4 0.15 290 / 0.25);
+}
+
+.dark {
   --background: oklch(0.16 0.03 280);
   --foreground: oklch(0.97 0.01 280);
   --surface: oklch(0.21 0.035 280);
@@ -68,36 +105,29 @@
   --muted-foreground: oklch(0.72 0.025 280);
   --accent: oklch(0.32 0.06 295);
   --accent-foreground: oklch(0.97 0.01 280);
-  --destructive: oklch(0.65 0.22 25);
-  --destructive-foreground: oklch(0.98 0.01 280);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 12%);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
   --ring: oklch(0.74 0.16 295);
   --mint: oklch(0.82 0.16 165);
   --mint-foreground: oklch(0.18 0.04 165);
   --amber: oklch(0.82 0.15 75);
   --amber-foreground: oklch(0.2 0.05 75);
-  --chart-1: oklch(0.74 0.16 295);
-  --chart-2: oklch(0.82 0.16 165);
-  --chart-3: oklch(0.82 0.15 75);
-  --chart-4: oklch(0.66 0.2 320);
-  --chart-5: oklch(0.7 0.15 220);
-}
-
-.dark {
-  --background: oklch(0.16 0.03 280);
-  --foreground: oklch(0.97 0.01 280);
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -8px rgb(0 0 0 / 0.5);
+  --shadow-elevated: 0 20px 60px -20px oklch(0.5 0.2 295 / 0.5);
 }
 
 @layer base {
   * { border-color: var(--color-border); }
-  html, body { background-color: var(--color-background); color: var(--color-foreground); }
+  html, body { background-color: var(--color-background); color: var(--color-foreground); transition: background-color 300ms ease, color 300ms ease; }
   body {
     font-family: ui-sans-serif, system-ui, -apple-system, "Inter", sans-serif;
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
     background-image:
-      radial-gradient(1200px 600px at 100% -10%, oklch(0.66 0.2 320 / 0.18), transparent 60%),
-      radial-gradient(900px 500px at -10% 110%, oklch(0.74 0.16 295 / 0.16), transparent 60%);
-    background-attachment: fixed;
+      radial-gradient(900px 500px at 100% -10%, color-mix(in oklab, var(--prism-2) 18%, transparent), transparent 60%),
+      radial-gradient(800px 500px at -10% 110%, color-mix(in oklab, var(--prism) 14%, transparent), transparent 60%);
   }
 }
 
@@ -111,7 +141,9 @@
   color: transparent;
 }
 @utility glass {
-  background: color-mix(in oklab, var(--surface) 70%, transparent);
+  background: color-mix(in oklab, var(--card) 80%, transparent);
   backdrop-filter: blur(14px);
-  border: 1px solid color-mix(in oklab, white 8%, transparent);
+  border: 1px solid var(--border);
 }
+@utility shadow-soft { box-shadow: var(--shadow-soft); }
+@utility shadow-elevated { box-shadow: var(--shadow-elevated); }

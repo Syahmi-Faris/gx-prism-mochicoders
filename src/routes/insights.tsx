@@ -21,11 +21,11 @@ function Insights() {
   return (
     <div className="px-5 pt-6 space-y-5">
       <header>
-        <p className="text-xs text-muted-foreground flex items-center gap-1"><Sparkles size={12} className="text-prism"/> AI behaviour engine</p>
+        <p className="text-xs text-muted-foreground flex items-center gap-1"><Sparkles size={12} className="text-primary"/> AI behaviour engine</p>
         <h1 className="text-2xl font-semibold">Behaviour Insights</h1>
       </header>
 
-      <Card className="p-4 bg-surface border-white/10">
+      <Card className="p-4 bg-card border-border">
         <div className="flex items-center justify-between mb-2">
           <p className="text-sm font-medium">Spending Pattern · This week</p>
           <Badge className="bg-amber/20 text-amber border-0 text-[10px]">+27% Fri-Sat</Badge>
@@ -77,7 +77,7 @@ function Insights() {
         />
       </section>
 
-      <Card className="p-4 bg-surface border-white/10">
+      <Card className="p-4 bg-card border-border">
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium flex items-center gap-2"><TrendingUp size={14} className="text-mint"/> Monthly Summary</p>
           <span className="text-[11px] text-muted-foreground">10s overview</span>
@@ -100,7 +100,7 @@ function Insights() {
 
 function InsightCard({ icon, title, detail, actions }: any) {
   return (
-    <Card className="p-4 bg-surface border-white/10">
+    <Card className="p-4 bg-card border-border">
       <div className="flex items-start gap-3">
         <div className="h-9 w-9 rounded-xl gradient-prism grid place-items-center text-primary-foreground shrink-0">{icon}</div>
         <div className="flex-1">

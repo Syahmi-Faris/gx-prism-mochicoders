@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RewardsRouteImport } from './routes/rewards'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as PocketsRouteImport } from './routes/pockets'
+import { Route as MarketRouteImport } from './routes/market'
 import { Route as InterceptRouteImport } from './routes/intercept'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as CaptureRouteImport } from './routes/capture'
@@ -22,9 +24,19 @@ const RewardsRoute = RewardsRouteImport.update({
   path: '/rewards',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PocketsRoute = PocketsRouteImport.update({
   id: '/pockets',
   path: '/pockets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketRoute = MarketRouteImport.update({
+  id: '/market',
+  path: '/market',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InterceptRoute = InterceptRouteImport.update({
@@ -58,7 +70,9 @@ export interface FileRoutesByFullPath {
   '/capture': typeof CaptureRoute
   '/insights': typeof InsightsRoute
   '/intercept': typeof InterceptRoute
+  '/market': typeof MarketRoute
   '/pockets': typeof PocketsRoute
+  '/profile': typeof ProfileRoute
   '/rewards': typeof RewardsRouteWithChildren
   '/rewards/market-observe': typeof RewardsMarketObserveRoute
 }
@@ -67,7 +81,9 @@ export interface FileRoutesByTo {
   '/capture': typeof CaptureRoute
   '/insights': typeof InsightsRoute
   '/intercept': typeof InterceptRoute
+  '/market': typeof MarketRoute
   '/pockets': typeof PocketsRoute
+  '/profile': typeof ProfileRoute
   '/rewards': typeof RewardsRouteWithChildren
   '/rewards/market-observe': typeof RewardsMarketObserveRoute
 }
@@ -77,7 +93,9 @@ export interface FileRoutesById {
   '/capture': typeof CaptureRoute
   '/insights': typeof InsightsRoute
   '/intercept': typeof InterceptRoute
+  '/market': typeof MarketRoute
   '/pockets': typeof PocketsRoute
+  '/profile': typeof ProfileRoute
   '/rewards': typeof RewardsRouteWithChildren
   '/rewards/market-observe': typeof RewardsMarketObserveRoute
 }
@@ -88,7 +106,9 @@ export interface FileRouteTypes {
     | '/capture'
     | '/insights'
     | '/intercept'
+    | '/market'
     | '/pockets'
+    | '/profile'
     | '/rewards'
     | '/rewards/market-observe'
   fileRoutesByTo: FileRoutesByTo
@@ -97,7 +117,9 @@ export interface FileRouteTypes {
     | '/capture'
     | '/insights'
     | '/intercept'
+    | '/market'
     | '/pockets'
+    | '/profile'
     | '/rewards'
     | '/rewards/market-observe'
   id:
@@ -106,7 +128,9 @@ export interface FileRouteTypes {
     | '/capture'
     | '/insights'
     | '/intercept'
+    | '/market'
     | '/pockets'
+    | '/profile'
     | '/rewards'
     | '/rewards/market-observe'
   fileRoutesById: FileRoutesById
@@ -116,7 +140,9 @@ export interface RootRouteChildren {
   CaptureRoute: typeof CaptureRoute
   InsightsRoute: typeof InsightsRoute
   InterceptRoute: typeof InterceptRoute
+  MarketRoute: typeof MarketRoute
   PocketsRoute: typeof PocketsRoute
+  ProfileRoute: typeof ProfileRoute
   RewardsRoute: typeof RewardsRouteWithChildren
 }
 
@@ -129,11 +155,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RewardsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pockets': {
       id: '/pockets'
       path: '/pockets'
       fullPath: '/pockets'
       preLoaderRoute: typeof PocketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/market': {
+      id: '/market'
+      path: '/market'
+      fullPath: '/market'
+      preLoaderRoute: typeof MarketRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/intercept': {
@@ -190,7 +230,9 @@ const rootRouteChildren: RootRouteChildren = {
   CaptureRoute: CaptureRoute,
   InsightsRoute: InsightsRoute,
   InterceptRoute: InterceptRoute,
+  MarketRoute: MarketRoute,
   PocketsRoute: PocketsRoute,
+  ProfileRoute: ProfileRoute,
   RewardsRoute: RewardsRouteWithChildren,
 }
 export const routeTree = rootRouteImport

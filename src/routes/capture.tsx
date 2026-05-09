@@ -19,13 +19,13 @@ function Capture() {
   return (
     <div className="px-5 pt-6 space-y-5">
       <header>
-        <p className="text-xs text-muted-foreground flex items-center gap-1"><Sparkles size={12} className="text-prism"/> AI-powered</p>
+        <p className="text-xs text-muted-foreground flex items-center gap-1"><Sparkles size={12} className="text-primary"/> AI-powered</p>
         <h1 className="text-2xl font-semibold">Smart Capture</h1>
         <p className="text-sm text-muted-foreground">Effortless tracking — four ways.</p>
       </header>
 
       <Tabs defaultValue="scan">
-        <TabsList className="grid grid-cols-4 w-full bg-surface">
+        <TabsList className="grid grid-cols-4 w-full bg-card">
           <TabsTrigger value="scan">Scan</TabsTrigger>
           <TabsTrigger value="voice">Voice</TabsTrigger>
           <TabsTrigger value="cash">Cash</TabsTrigger>
@@ -45,8 +45,8 @@ function ScanTab() {
   const [state, setState] = useState<"idle" | "processing" | "done">("idle");
   return (
     <div className="space-y-4">
-      <Card className="p-6 bg-surface border-dashed border-2 border-white/15 text-center">
-        <Upload className="mx-auto text-prism" size={28}/>
+      <Card className="p-6 bg-card border-dashed border-2 border-white/15 text-center">
+        <Upload className="mx-auto text-primary" size={28}/>
         <p className="mt-2 font-medium">Drop a screenshot</p>
         <p className="text-xs text-muted-foreground">Touch 'n Go, ShopeePay, banking apps, e-wallets</p>
         <Button
@@ -61,7 +61,7 @@ function ScanTab() {
       <AnimatePresence>
         {state === "processing" && (
           <motion.div initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} exit={{opacity:0}}>
-            <Card className="p-4 bg-surface border-white/10">
+            <Card className="p-4 bg-card border-border">
               <div className="flex items-center gap-3">
                 <div className="h-9 w-9 rounded-xl gradient-prism grid place-items-center">
                   <motion.div animate={{rotate:360}} transition={{repeat:Infinity,duration:1.4,ease:"linear"}}>
@@ -81,9 +81,9 @@ function ScanTab() {
         )}
         {state === "done" && (
           <motion.div initial={{opacity:0,y:8}} animate={{opacity:1,y:0}}>
-            <Card className="p-4 bg-surface border-white/10">
+            <Card className="p-4 bg-card border-border">
               <div className="flex items-center gap-2 mb-3">
-                <Sparkles className="text-prism" size={14}/>
+                <Sparkles className="text-primary" size={14}/>
                 <p className="text-sm font-medium">AI Extraction Result</p>
               </div>
               <Row icon={<CheckCircle2 className="text-mint" size={16}/>} text="4 transactions detected"/>
@@ -140,7 +140,7 @@ function VoiceTab() {
 
   return (
     <div className="space-y-4">
-      <Card className="p-6 bg-surface border-white/10 text-center">
+      <Card className="p-6 bg-card border-border text-center">
         <button
           onClick={handle}
           className={`relative mx-auto h-32 w-32 rounded-full bg-gradient-to-br ${colors[state]} grid place-items-center text-primary-foreground shadow-2xl`}
@@ -186,7 +186,7 @@ function CashTab() {
   };
   return (
     <div className="space-y-4">
-      <Card className="p-4 bg-surface border-white/10">
+      <Card className="p-4 bg-card border-border">
         <p className="text-xs text-muted-foreground mb-3">One-tap cash logging</p>
         <div className="flex gap-2">
           <Select value={cat} onValueChange={setCat}>
@@ -214,14 +214,14 @@ function RecentTab() {
     <div className="space-y-2">
       <p className="text-xs text-muted-foreground mb-1">Recently Captured (raw)</p>
       {captured.map((c) => (
-        <Card key={c.id} className="p-3 bg-surface/60 border-dashed border-white/15 flex items-center gap-3">
+        <Card key={c.id} className="p-3 bg-card/60 border-dashed border-white/15 flex items-center gap-3">
           <div className="h-9 w-9 rounded-xl bg-accent grid place-items-center text-xs">
             {c.source === "screenshot" ? <ScanLine size={14}/> : c.source === "voice" ? <Mic size={14}/> : <Banknote size={14}/>}
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
               <p className="text-sm font-medium truncate">{c.merchant}</p>
-              <Badge className="bg-prism/20 text-prism border-0 text-[10px]">new</Badge>
+              <Badge className="bg-primary/15 text-primary border-0 text-[10px]">new</Badge>
             </div>
             <p className="text-[11px] text-muted-foreground">{c.category} · {c.time} · via {c.source}</p>
           </div>

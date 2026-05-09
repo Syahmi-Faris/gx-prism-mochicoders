@@ -3,15 +3,18 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ResponsiveContainer, AreaChart, Area, Tooltip } from "recharts";
-import { ChevronLeft, Info } from "lucide-react";
+import { Info, LineChart } from "lucide-react";
 
-export const Route = createFileRoute("/rewards/market-observe")({
-  head: () => ({ meta: [{ title: "Market Observe — GX Prism" }] }),
-  component: MarketObserve,
+export const Route = createFileRoute("/market")({
+  head: () => ({ meta: [{ title: "Market — GX Prism" }] }),
+  component: Market,
 });
 
 const series = (seed: number, trend = 1) =>
-  Array.from({ length: 24 }, (_, i) => ({ x: i, v: 100 + Math.sin(i / 2 + seed) * 6 + i * 0.4 * trend + (Math.random()*2) }));
+  Array.from({ length: 24 }, (_, i) => ({
+    x: i,
+    v: 100 + Math.sin(i / 2 + seed) * 6 + i * 0.4 * trend + Math.random() * 2,
+  }));
 
 const assets = [
   { name: "Gold", risk: "Low", riskTone: "mint", insight: "Stable growth over the past 6 months.", suit: "Suitable after RM 500 emergency savings milestone", data: series(1, 1), trend: "+4.2%" },
@@ -20,26 +23,28 @@ const assets = [
   { name: "Blue-Chip Stocks", risk: "High", riskTone: "amber", insight: "Established companies, higher volatility.", suit: "Suitable after 3-month emergency buffer", data: series(4, 1.5), trend: "+8.7%" },
 ];
 
-function MarketObserve() {
+function Market() {
   return (
     <div className="px-5 pt-6 space-y-4">
-      <header className="flex items-center gap-2">
-        <Link to="/rewards" className="h-9 w-9 rounded-xl bg-card grid place-items-center"><ChevronLeft size={16}/></Link>
+      <header className="flex items-center gap-3">
+        <div className="h-10 w-10 rounded-xl gradient-prism grid place-items-center text-primary-foreground shadow-soft">
+          <LineChart size={18} />
+        </div>
         <div>
           <p className="text-xs text-muted-foreground">Beginner-friendly · Educational</p>
           <h1 className="text-2xl font-semibold">Market Observe</h1>
         </div>
       </header>
 
-      <Card className="p-3 bg-primary/10 border-primary/30 flex items-start gap-2">
-        <Info size={14} className="text-primary mt-0.5"/>
+      <Card className="p-3 bg-accent border-border flex items-start gap-2">
+        <Info size={14} className="text-primary mt-0.5" />
         <p className="text-[12px] text-muted-foreground leading-snug">
           Learn before you invest. We never push "Buy Now" — only suitability based on your resilience milestones.
         </p>
       </Card>
 
       {assets.map((a) => (
-        <Card key={a.name} className="p-4 bg-card border-border">
+        <Card key={a.name} className="p-4 bg-card border-border shadow-soft">
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-base font-semibold">{a.name}</p>
@@ -48,8 +53,8 @@ function MarketObserve() {
             <div className="text-right">
               <p className="text-sm font-medium text-mint">{a.trend}</p>
               <Badge className={`mt-1 border-0 text-[10px] ${
-                a.riskTone === "mint" ? "bg-mint/20 text-mint" :
-                a.riskTone === "amber" ? "bg-amber/20 text-amber" : "bg-primary/15 text-primary"
+                a.riskTone === "mint" ? "bg-mint/15 text-mint" :
+                a.riskTone === "amber" ? "bg-amber/15 text-amber" : "bg-primary/15 text-primary"
               }`}>{a.risk} risk</Badge>
             </div>
           </div>
@@ -59,12 +64,12 @@ function MarketObserve() {
               <AreaChart data={a.data}>
                 <defs>
                   <linearGradient id={`g-${a.name}`} x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="var(--prism)" stopOpacity={0.5}/>
-                    <stop offset="100%" stopColor="var(--prism)" stopOpacity={0}/>
+                    <stop offset="0%" stopColor="var(--prism)" stopOpacity={0.45} />
+                    <stop offset="100%" stopColor="var(--prism)" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <Tooltip contentStyle={{background:"oklch(0.21 0.035 280)", border:"1px solid rgba(255,255,255,0.1)", borderRadius:8, fontSize:11}} labelFormatter={()=>""}/>
-                <Area type="monotone" dataKey="v" stroke="var(--prism)" strokeWidth={2} fill={`url(#g-${a.name})`}/>
+                <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 8, fontSize: 11, color: "var(--foreground)" }} labelFormatter={() => ""} />
+                <Area type="monotone" dataKey="v" stroke="var(--prism)" strokeWidth={2} fill={`url(#g-${a.name})`} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -72,21 +77,24 @@ function MarketObserve() {
           <p className="text-[11px] text-muted-foreground mt-1">{a.suit}</p>
 
           <div className="flex flex-wrap gap-2 mt-3">
-            <Btn label="View Chart" primary/>
-            <Btn label="Learn Why"/>
-            <Btn label="Check Suitability"/>
-            <Btn label="Explore Fund"/>
-            <Btn label="Add to Growth Plan"/>
+            <Btn label="View Chart" primary />
+            <Btn label="Learn Why" />
+            <Btn label="Check Suitability" />
+            <Btn label="Explore Fund" />
           </div>
         </Card>
       ))}
+
+      <Link to="/rewards" className="block text-center text-[12px] text-primary py-3">
+        ← Back to Rewards & Growth
+      </Link>
     </div>
   );
 }
 
 function Btn({ label, primary }: { label: string; primary?: boolean }) {
   return (
-    <Button className={`h-7 px-3 text-[11px] rounded-full border-0 ${primary ? "gradient-prism text-primary-foreground" : "bg-accent text-foreground"}`}>
+    <Button className={`h-7 px-3 text-[11px] rounded-full border-0 ${primary ? "gradient-prism text-primary-foreground" : "bg-accent text-accent-foreground hover:bg-accent/80"}`}>
       {label}
     </Button>
   );

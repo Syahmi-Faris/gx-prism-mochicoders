@@ -45,8 +45,8 @@ function Intercept() {
             { icon: Clock, label: "BNPL repayment due in 3d", time: "Yesterday", tone: "prism" },
             { icon: AlertTriangle, label: "Luxury purchase, low balance", time: "Sun 10:08 PM", tone: "amber" },
           ].map((r, i) => (
-            <Card key={i} className="p-3 bg-surface border-white/10 flex items-center gap-3">
-              <r.icon className={r.tone === "amber" ? "text-amber" : "text-prism"} size={16}/>
+            <Card key={i} className="p-3 bg-card border-border flex items-center gap-3">
+              <r.icon className={r.tone === "amber" ? "text-amber" : "text-primary"} size={16}/>
               <div className="flex-1">
                 <p className="text-sm">{r.label}</p>
                 <p className="text-[11px] text-muted-foreground">{r.time}</p>
@@ -83,7 +83,7 @@ function InterceptModal({ onClose }: { onClose: () => void }) {
       <motion.div
         initial={{y:40,opacity:0}} animate={{y:0,opacity:1}} exit={{y:40,opacity:0}}
         onClick={(e)=>e.stopPropagation()}
-        className="w-full max-w-md bg-surface rounded-3xl border border-white/10 p-5 shadow-2xl"
+        className="w-full max-w-md bg-card rounded-3xl border border-border p-5 shadow-2xl"
       >
         {/* Stepper */}
         <div className="flex items-center gap-2 mb-4">
@@ -115,7 +115,7 @@ function InterceptModal({ onClose }: { onClose: () => void }) {
         )}
         {step === 2 && (
           <div className="space-y-3">
-            <Badge className="bg-prism/20 text-prism border-0">Choose a path</Badge>
+            <Badge className="bg-primary/15 text-primary border-0">Choose a path</Badge>
             <p className="text-base font-semibold">What feels right tonight?</p>
             <DecisionBtn label="Delay Purchase (24h)" tone="primary" onClick={() => { setDecision("delayed"); finish("Saved from a 24h delay", 20); }}/>
             <DecisionBtn label="Reduce Amount (−RM 30)" tone="mint" onClick={() => { setDecision("reduced"); finish("Saved by reducing impulse", 30); }}/>

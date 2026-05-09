@@ -39,13 +39,13 @@ function Home() {
       </Card>
 
       <div className="grid grid-cols-2 gap-3">
-        <Card className="p-4 bg-surface border-white/10">
+        <Card className="p-4 bg-card border-border">
           <p className="text-[11px] text-muted-foreground">Recovery Pocket</p>
           <p className="mt-1 text-2xl font-semibold text-mint">RM {recoveryPocket}</p>
           <p className="text-[11px] text-muted-foreground mt-1 leading-tight">{recoveryNote}</p>
         </Card>
         <Link to="/rewards">
-          <Card className="p-4 bg-surface border-white/10 h-full">
+          <Card className="p-4 bg-card border-border h-full">
             <p className="text-[11px] text-muted-foreground flex items-center gap-1"><TrendingUp size={11}/> Rewards & Growth</p>
             <p className="mt-1 text-2xl font-semibold">7🔥</p>
             <p className="text-[11px] text-muted-foreground mt-1 leading-tight">Resilience streak · Market Observe</p>
@@ -79,7 +79,7 @@ function Home() {
         </div>
         <div className="mt-3 space-y-2">
           {recent.map((c) => (
-            <Card key={c.id} className="p-3 flex items-center gap-3 bg-surface border-white/10">
+            <Card key={c.id} className="p-3 flex items-center gap-3 bg-card border-border">
               <div className="h-9 w-9 rounded-xl bg-accent grid place-items-center text-xs">{sourceIcon(c.source)}</div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium truncate">{c.merchant}</p>
@@ -109,8 +109,8 @@ function Stat({ label, value }: { label: string; value: string }) {
 function QuickTile({ to, icon: Icon, label }: { to: string; icon: any; label: string }) {
   return (
     <Link to={to} className="flex-1">
-      <Card className="p-3 bg-surface border-white/10 grid place-items-center gap-1">
-        <Icon size={18} className="text-prism"/>
+      <Card className="p-3 bg-card border-border grid place-items-center gap-1">
+        <Icon size={18} className="text-primary"/>
         <span className="text-[11px]">{label}</span>
       </Card>
     </Link>

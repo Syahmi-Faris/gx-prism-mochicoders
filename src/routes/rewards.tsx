@@ -14,7 +14,7 @@ function RewardsLayout() {
   return (
     <div className="px-5 pt-6 space-y-5">
       <header className="flex items-center gap-2">
-        <Link to="/" className="h-9 w-9 rounded-xl bg-surface grid place-items-center"><ChevronLeft size={16}/></Link>
+        <Link to="/" className="h-9 w-9 rounded-xl bg-card grid place-items-center"><ChevronLeft size={16}/></Link>
         <div>
           <p className="text-xs text-muted-foreground">Stay motivated</p>
           <h1 className="text-2xl font-semibold">Rewards & Growth</h1>
@@ -33,7 +33,7 @@ function RewardsLayout() {
         <p className="text-[11px] opacity-80 mt-2">7 more days unlocks cashback boost x1.5</p>
       </Card>
 
-      <Card className="p-4 bg-surface border-white/10 flex items-center gap-3">
+      <Card className="p-4 bg-card border-border flex items-center gap-3">
         <Gift className="text-mint" size={20}/>
         <div className="flex-1">
           <p className="text-sm font-medium">Cashback Rewards</p>
@@ -43,14 +43,14 @@ function RewardsLayout() {
       </Card>
 
       <Link to="/rewards/market-observe">
-        <Card className="p-4 bg-surface border-white/10">
+        <Card className="p-4 bg-card border-border">
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-xl gradient-prism grid place-items-center text-primary-foreground"><LineChart size={18}/></div>
             <div className="flex-1">
               <p className="text-sm font-medium">Market Observe</p>
               <p className="text-[11px] text-muted-foreground">Beginner-friendly investment discovery — strictly educational</p>
             </div>
-            <span className="text-prism">→</span>
+            <span className="text-primary">→</span>
           </div>
         </Card>
       </Link>
