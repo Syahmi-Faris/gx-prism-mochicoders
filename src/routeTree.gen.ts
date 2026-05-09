@@ -9,38 +9,154 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RewardsRouteImport } from './routes/rewards'
+import { Route as PocketsRouteImport } from './routes/pockets'
+import { Route as InterceptRouteImport } from './routes/intercept'
+import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as CaptureRouteImport } from './routes/capture'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RewardsMarketObserveRouteImport } from './routes/rewards.market-observe'
 
+const RewardsRoute = RewardsRouteImport.update({
+  id: '/rewards',
+  path: '/rewards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PocketsRoute = PocketsRouteImport.update({
+  id: '/pockets',
+  path: '/pockets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InterceptRoute = InterceptRouteImport.update({
+  id: '/intercept',
+  path: '/intercept',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaptureRoute = CaptureRouteImport.update({
+  id: '/capture',
+  path: '/capture',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RewardsMarketObserveRoute = RewardsMarketObserveRouteImport.update({
+  id: '/market-observe',
+  path: '/market-observe',
+  getParentRoute: () => RewardsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/capture': typeof CaptureRoute
+  '/insights': typeof InsightsRoute
+  '/intercept': typeof InterceptRoute
+  '/pockets': typeof PocketsRoute
+  '/rewards': typeof RewardsRouteWithChildren
+  '/rewards/market-observe': typeof RewardsMarketObserveRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/capture': typeof CaptureRoute
+  '/insights': typeof InsightsRoute
+  '/intercept': typeof InterceptRoute
+  '/pockets': typeof PocketsRoute
+  '/rewards': typeof RewardsRouteWithChildren
+  '/rewards/market-observe': typeof RewardsMarketObserveRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/capture': typeof CaptureRoute
+  '/insights': typeof InsightsRoute
+  '/intercept': typeof InterceptRoute
+  '/pockets': typeof PocketsRoute
+  '/rewards': typeof RewardsRouteWithChildren
+  '/rewards/market-observe': typeof RewardsMarketObserveRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/capture'
+    | '/insights'
+    | '/intercept'
+    | '/pockets'
+    | '/rewards'
+    | '/rewards/market-observe'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/capture'
+    | '/insights'
+    | '/intercept'
+    | '/pockets'
+    | '/rewards'
+    | '/rewards/market-observe'
+  id:
+    | '__root__'
+    | '/'
+    | '/capture'
+    | '/insights'
+    | '/intercept'
+    | '/pockets'
+    | '/rewards'
+    | '/rewards/market-observe'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CaptureRoute: typeof CaptureRoute
+  InsightsRoute: typeof InsightsRoute
+  InterceptRoute: typeof InterceptRoute
+  PocketsRoute: typeof PocketsRoute
+  RewardsRoute: typeof RewardsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/rewards': {
+      id: '/rewards'
+      path: '/rewards'
+      fullPath: '/rewards'
+      preLoaderRoute: typeof RewardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pockets': {
+      id: '/pockets'
+      path: '/pockets'
+      fullPath: '/pockets'
+      preLoaderRoute: typeof PocketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intercept': {
+      id: '/intercept'
+      path: '/intercept'
+      fullPath: '/intercept'
+      preLoaderRoute: typeof InterceptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/capture': {
+      id: '/capture'
+      path: '/capture'
+      fullPath: '/capture'
+      preLoaderRoute: typeof CaptureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +164,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rewards/market-observe': {
+      id: '/rewards/market-observe'
+      path: '/market-observe'
+      fullPath: '/rewards/market-observe'
+      preLoaderRoute: typeof RewardsMarketObserveRouteImport
+      parentRoute: typeof RewardsRoute
+    }
   }
 }
 
+interface RewardsRouteChildren {
+  RewardsMarketObserveRoute: typeof RewardsMarketObserveRoute
+}
+
+const RewardsRouteChildren: RewardsRouteChildren = {
+  RewardsMarketObserveRoute: RewardsMarketObserveRoute,
+}
+
+const RewardsRouteWithChildren =
+  RewardsRoute._addFileChildren(RewardsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CaptureRoute: CaptureRoute,
+  InsightsRoute: InsightsRoute,
+  InterceptRoute: InterceptRoute,
+  PocketsRoute: PocketsRoute,
+  RewardsRoute: RewardsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
