@@ -1,12 +1,24 @@
-# GX Prism Prototype Proposal
+# ✨ GX Prism
 
-## One-Line Pitch
+> **An AI-powered financial resilience ecosystem for Malaysian youth**
 
-**GX Prism transforms GXBank into an AI-powered financial resilience system that captures spending effortlessly, detects risky behaviour, intervenes before impulse spending, and rebuilds healthier money habits automatically.**
+GX Prism transforms GXBank into a smart financial behaviour assistant that:
+
+* 📸 Captures spending effortlessly
+* 🧠 Detects risky financial behaviour
+* ⚠️ Intervenes before impulse spending happens
+* 💰 Rebuilds healthier money habits automatically
+* 🎯 Makes saving and discipline rewarding
 
 ---
 
-# Overview
+## 🚀 One-Line Pitch
+
+> **GX Prism transforms GXBank into an AI-powered financial resilience system that captures spending effortlessly, detects risky behaviour, intervenes before impulse spending, and rebuilds healthier money habits automatically.**
+
+---
+
+# 📖 Overview
 
 GX Prism is an AI-powered financial resilience ecosystem designed for Malaysian youth. Instead of functioning as a traditional expense tracker, GX Prism acts as an active financial behaviour assistant integrated with GXBank.
 
@@ -23,290 +35,189 @@ GX Prism combines AI, behavioural economics, and automation to help users build 
 
 ---
 
-# Target Users
+# 👥 Target Users
 
-GX Prism is designed for:
+GX Prism is built for Malaysian youth:
 
-* Malaysian tertiary students
-* Fresh graduates
-* Interns
-* Early-career workers
-* Users with allowance, scholarship, salary, or part-time income
-* Users struggling with:
+* 🎓 Tertiary students
+* 🧑‍💻 Fresh graduates
+* 💼 Interns & early-career workers
+* 💸 Users struggling with:
 
-  * Manual expense tracking
   * Impulse spending
-  * BNPL dependency
-  * Inconsistent saving habits
-
-These users often understand the importance of financial management but need a system that reduces friction and guides them at critical decision moments.
-
----
-
-# Problem Statement
-
-The case study focuses on how GXBank can help Malaysian youth build financial resilience and prevent debt accumulation using:
-
-* AI
-* Behavioural economics
-* Automated habit-building
-
-GX Prism addresses three major problems:
-
-## 1. Tracking Friction
-
-Users stop recording expenses because manual input becomes tiring.
-
-## 2. Invisible Spending Patterns
-
-Users often fail to realize how repeated small spending habits create long-term financial instability.
-
-## 3. Delayed Regret
-
-Most financial apps only show spending insights after money has already been spent.
+  * BNPL habits
+  * Poor saving consistency
+  * Manual expense tracking fatigue
 
 ---
 
-# Solution Architecture
+# ⚡ Problem Statement
 
-GX Prism solves these problems through:
+Young users often know they should manage money better — but existing finance apps create too much friction.
 
-* Effortless spending capture
-* AI spending pattern detection
-* Real-time impulse intervention
-* Automated savings and recovery systems
-* Gamified financial reinforcement
+GX Prism solves 3 major problems:
 
----
-
-# Core Features
-
-## 1. Smart Capture
-
-### Purpose
-
-Most finance apps fail because users eventually stop manually recording expenses.
-
-GX Prism removes this friction by making spending capture nearly effortless.
-
-### Features
-
-#### GXBank Auto Sync
-
-* GXBank transactions are automatically logged.
-* No manual tracking required.
-
-#### Screenshot Extraction
-
-Users can upload screenshots from:
-
-* Touch 'n Go
-* ShopeePay
-* Other bank apps
-* E-wallet transaction histories
-
-AI extracts:
-
-* Merchant
-* Amount
-* Date
-* Category
-
-#### Voice Log
-
-Users can record expenses naturally.
-
-Example:
-
-```text
-“RM8 for nasi lemak”
-```
-
-The app converts speech into structured financial data.
-
-#### Quick Cash Input
-
-For offline spending, users can quickly input:
-
-* Amount
-* Spending category
-
-### Benefits
-
-* Reduces manual effort
-* Improves consistency in tracking
-* Maintains accurate spending records
-* Works well for busy or less disciplined users
+| Problem                        | Reality                                |
+| ------------------------------ | -------------------------------------- |
+| 📝 Tracking Friction           | Users stop manually recording expenses |
+| 👀 Invisible Spending Patterns | Small repeated spending goes unnoticed |
+| ⏰ Delayed Regret               | Apps only react after money is gone    |
 
 ---
 
-## 2. Behaviour Intelligence + Impulse Intercept
+# 🧩 Solution
 
-### Purpose
+GX Prism combines:
 
-GX Prism does not only analyze past spending.
+* 🤖 AI spending intelligence
+* ⚡ Real-time behavioural intervention
+* 💰 Automated financial recovery
+* 🎮 Gamified habit reinforcement
 
-It proactively detects risky financial behaviour and intervenes before users regret financial decisions.
+---
 
-### AI Behaviour Detection
+# 🌟 Core Features
 
-The system identifies patterns such as:
+## 📸 1. Smart Capture
 
-* Late-night food delivery spikes
-* Repeated BNPL purchases
-* Exam-week overspending
-* Luxury purchases with low balance
-* Unusual spending spikes
+### Capture Spending With Almost Zero Effort
 
-### Example Insight
+GX Prism removes the pain of manual tracking through:
+
+| Feature                  | Description                              |
+| ------------------------ | ---------------------------------------- |
+| 🔄 GXBank Auto Sync      | Automatically logs GXBank transactions   |
+| 📷 Screenshot Extraction | AI reads receipts & e-wallet screenshots |
+| 🎙️ Voice Log            | Example: `RM8 for nasi lemak`            |
+| 💵 Quick Cash Input      | Fast offline cash recording              |
+
+### ✅ Benefits
+
+* Less manual work
+* More consistent tracking
+* Better financial visibility
+
+---
+
+## 🧠 2. Behaviour Intelligence + Impulse Intercept
+
+### Detect Risky Spending Before Regret Happens
+
+GX Prism analyzes patterns such as:
+
+* 🌙 Late-night food delivery spikes
+* 🛍️ Repeated BNPL purchases
+* 📚 Exam-week overspending
+* 💳 Luxury spending with low balance
+
+### Example AI Insight
 
 ```text
 “Your spending increases by 27% during assessment week.”
 ```
 
-### Impulse Intercept
+### ⚠️ Impulse Intercept
 
-When risky behaviour is detected, GX Prism activates an intervention flow.
-
-Example:
-
-A user attempts a Shopee BNPL-related payment.
-
-GX Prism warns:
+Before risky purchases are completed:
 
 ```text
 “This purchase may reduce your weekly essentials budget by RM38.”
 ```
 
-The user can then:
+Users can:
 
-* Pause the purchase
-* Delay the decision
-* Redirect money into Recovery Pocket
-* Continue anyway
+* ⏸️ Pause purchase
+* ⌛ Delay decision
+* 💰 Redirect to Recovery Pocket
+* ➡️ Continue anyway
 
-### Benefits
+### ✅ Benefits
 
 * Prevents impulsive spending
 * Reduces BNPL dependency
-* Protects essentials budget
-* Encourages mindful financial decisions
+* Protects essential budgets
 
 ---
 
-## 3. Auto-Rebuild + Reinforcement
+## 💰 3. Auto-Rebuild + Reinforcement
 
-### Purpose
+### Automatically Recover Financial Stability
 
-After risky spending is detected or avoided, GX Prism helps users rebuild financial stability automatically.
+GX Prism helps users rebuild healthier financial habits.
 
-### Auto-Rebuild System
+### 🔄 Auto-Rebuild Features
 
-#### Payday Split
+| Feature              | Purpose                                     |
+| -------------------- | ------------------------------------------- |
+| 💵 Payday Split      | Separates essentials, savings & spending    |
+| 🛟 Recovery Pocket   | Stores money saved from cancelled purchases |
+| 🤖 Automated Savings | Round-ups, weekly reserve & salary rules    |
 
-Income or allowance is automatically divided into:
+### 🎮 Reinforcement System
 
-* Essentials
-* Daily Spend
-* Savings
-* Emergency Buffer
-* Recovery Pocket
+Users stay motivated through:
 
-#### Recovery Pocket
+* 🔥 Resilience streaks
+* 🎟️ Cheat day tokens
+* 🏅 Badges & milestones
+* 🎁 Cashback simulations
 
-Money saved from:
+### ✅ Benefits
 
-* Cancelled impulse purchases
-* BNPL recovery actions
-
-is redirected into a protected savings pocket.
-
-#### Automated Saving Rules
-
-Supported automation includes:
-
-* Round-up savings
-* Weekly reserve transfers
-* Salary-triggered savings
-
-### Reinforcement System
-
-GX Prism motivates users through:
-
-* Resilience streaks
-* Cheat day tokens
-* Badges
-* Milestone rewards
-* Cashback or savings bonus simulations
-
-### Benefits
-
-* Makes good financial habits automatic
-* Encourages consistency
-* Builds emergency savings gradually
+* Makes saving automatic
+* Builds long-term discipline
 * Rewards healthy financial behaviour
 
 ---
 
-# Final Prototype Flow
+# 🔄 Prototype Flow
 
 ```text
-Smart Capture
-      ↓
-Behaviour Intelligence
-      ↓
-Impulse Intercept
-      ↓
-Auto-Rebuild
-      ↓
-Reinforcement
+📸 Smart Capture
+        ↓
+🧠 Behaviour Intelligence
+        ↓
+⚠️ Impulse Intercept
+        ↓
+💰 Auto-Rebuild
+        ↓
+🎮 Reinforcement
 ```
-
-### Flow Description
-
-1. Smart Capture collects spending data from GXBank, screenshots, voice logs, and cash input.
-2. Behaviour Intelligence analyzes spending patterns.
-3. Impulse Intercept pauses risky spending before regret happens.
-4. Auto-Rebuild redirects money into savings and structured pockets.
-5. Reinforcement rewards healthy financial discipline.
 
 ---
 
-# Overall Benefits
+# 🌍 Impact
 
-## User Benefits
+## 👤 For Users
 
 GX Prism helps users:
 
-* Track expenses with minimal effort
-* Understand spending behaviour clearly
+* Track expenses effortlessly
 * Avoid impulsive purchases
 * Reduce BNPL dependency
-* Protect essential spending
 * Build emergency savings
-* Develop long-term financial discipline
-* Enjoy guilt-free spending when financially safe
+* Develop healthier money habits
 
-## GXBank Benefits
+## 🏦 For GXBank
 
-GX Prism strengthens GXBank by transforming it from:
+GX Prism transforms GXBank from:
 
 ```text
-Passive Transaction App
+Traditional Banking App
             ↓
-Proactive Financial Resilience Ecosystem
+AI Financial Resilience Ecosystem
 ```
 
-This increases:
+Benefits include:
 
-* User engagement
-* Financial wellness adoption
-* Long-term customer trust
-* Youth retention within the GXBank ecosystem
+* Higher user engagement
+* Better financial wellness adoption
+* Stronger youth retention
+* Increased long-term trust
 
 ---
 
-# Key Innovation
+# 🚀 Key Innovation
 
 Unlike traditional budgeting apps that only show historical spending data, GX Prism:
 
