@@ -4,11 +4,11 @@
 
 GX Prism transforms GXBank into a smart financial behaviour assistant that:
 
-* 📸 Captures spending effortlessly
-* 🧠 Detects risky financial behaviour
-* ⚠️ Intervenes before impulse spending happens
-* 💰 Rebuilds healthier money habits automatically
-* 🎯 Makes saving and discipline rewarding
+- 📸 Captures spending effortlessly
+- 🧠 Detects risky financial behaviour
+- ⚠️ Intervenes before impulse spending happens
+- 💰 Rebuilds healthier money habits automatically
+- 🎯 Makes saving and discipline rewarding
 
 ---
 
@@ -24,12 +24,12 @@ GX Prism is an AI-powered financial resilience ecosystem designed for Malaysian 
 
 The system helps users:
 
-* Capture spending effortlessly
-* Detect risky financial behaviour
-* Prevent impulsive spending
-* Reduce BNPL dependency
-* Automate savings and financial recovery
-* Build healthier long-term money habits
+- Capture spending effortlessly
+- Detect risky financial behaviour
+- Prevent impulsive spending
+- Reduce BNPL dependency
+- Automate savings and financial recovery
+- Build healthier long-term money habits
 
 GX Prism combines AI, behavioural economics, and automation to help users build financial resilience before debt problems become serious.
 
@@ -39,15 +39,14 @@ GX Prism combines AI, behavioural economics, and automation to help users build 
 
 GX Prism is built for Malaysian youth:
 
-* 🎓 Tertiary students
-* 🧑‍💻 Fresh graduates
-* 💼 Interns & early-career workers
-* 💸 Users struggling with:
-
-  * Impulse spending
-  * BNPL habits
-  * Poor saving consistency
-  * Manual expense tracking fatigue
+- 🎓 Tertiary students
+- 🧑‍💻 Fresh graduates
+- 💼 Interns & early-career workers
+- 💸 Users struggling with:
+  - Impulse spending
+  - BNPL habits
+  - Poor saving consistency
+  - Manual expense tracking fatigue
 
 ---
 
@@ -61,7 +60,7 @@ GX Prism solves 3 major problems:
 | ------------------------------ | -------------------------------------- |
 | 📝 Tracking Friction           | Users stop manually recording expenses |
 | 👀 Invisible Spending Patterns | Small repeated spending goes unnoticed |
-| ⏰ Delayed Regret               | Apps only react after money is gone    |
+| ⏰ Delayed Regret              | Apps only react after money is gone    |
 
 ---
 
@@ -69,10 +68,10 @@ GX Prism solves 3 major problems:
 
 GX Prism combines:
 
-* 🤖 AI spending intelligence
-* ⚡ Real-time behavioural intervention
-* 💰 Automated financial recovery
-* 🎮 Gamified habit reinforcement
+- 🤖 AI spending intelligence
+- ⚡ Real-time behavioural intervention
+- 💰 Automated financial recovery
+- 🎮 Gamified habit reinforcement
 
 ---
 
@@ -88,14 +87,14 @@ GX Prism removes the pain of manual tracking through:
 | ------------------------ | ---------------------------------------- |
 | 🔄 GXBank Auto Sync      | Automatically logs GXBank transactions   |
 | 📷 Screenshot Extraction | AI reads receipts & e-wallet screenshots |
-| 🎙️ Voice Log            | Example: `RM8 for nasi lemak`            |
+| 🎙️ Voice Log             | Example: `RM8 for nasi lemak`            |
 | 💵 Quick Cash Input      | Fast offline cash recording              |
 
 ### ✅ Benefits
 
-* Less manual work
-* More consistent tracking
-* Better financial visibility
+- Less manual work
+- More consistent tracking
+- Better financial visibility
 
 ---
 
@@ -105,10 +104,10 @@ GX Prism removes the pain of manual tracking through:
 
 GX Prism analyzes patterns such as:
 
-* 🌙 Late-night food delivery spikes
-* 🛍️ Repeated BNPL purchases
-* 📚 Exam-week overspending
-* 💳 Luxury spending with low balance
+- 🌙 Late-night food delivery spikes
+- 🛍️ Repeated BNPL purchases
+- 📚 Exam-week overspending
+- 💳 Luxury spending with low balance
 
 ### Example AI Insight
 
@@ -126,16 +125,16 @@ Before risky purchases are completed:
 
 Users can:
 
-* ⏸️ Pause purchase
-* ⌛ Delay decision
-* 💰 Redirect to Recovery Pocket
-* ➡️ Continue anyway
+- ⏸️ Pause purchase
+- ⌛ Delay decision
+- 💰 Redirect to Recovery Pocket
+- ➡️ Continue anyway
 
 ### ✅ Benefits
 
-* Prevents impulsive spending
-* Reduces BNPL dependency
-* Protects essential budgets
+- Prevents impulsive spending
+- Reduces BNPL dependency
+- Protects essential budgets
 
 ---
 
@@ -157,16 +156,16 @@ GX Prism helps users rebuild healthier financial habits.
 
 Users stay motivated through:
 
-* 🔥 Resilience streaks
-* 🎟️ Cheat day tokens
-* 🏅 Badges & milestones
-* 🎁 Cashback simulations
+- 🔥 Resilience streaks
+- 🎟️ Cheat day tokens
+- 🏅 Badges & milestones
+- 🎁 Cashback simulations
 
 ### ✅ Benefits
 
-* Makes saving automatic
-* Builds long-term discipline
-* Rewards healthy financial behaviour
+- Makes saving automatic
+- Builds long-term discipline
+- Rewards healthy financial behaviour
 
 ---
 
@@ -192,11 +191,11 @@ Users stay motivated through:
 
 GX Prism helps users:
 
-* Track expenses effortlessly
-* Avoid impulsive purchases
-* Reduce BNPL dependency
-* Build emergency savings
-* Develop healthier money habits
+- Track expenses effortlessly
+- Avoid impulsive purchases
+- Reduce BNPL dependency
+- Build emergency savings
+- Develop healthier money habits
 
 ## 🏦 For GXBank
 
@@ -210,10 +209,10 @@ AI Financial Resilience Ecosystem
 
 Benefits include:
 
-* Higher user engagement
-* Better financial wellness adoption
-* Stronger youth retention
-* Increased long-term trust
+- Higher user engagement
+- Better financial wellness adoption
+- Stronger youth retention
+- Increased long-term trust
 
 ---
 
@@ -221,10 +220,10 @@ Benefits include:
 
 Unlike traditional budgeting apps that only show historical spending data, GX Prism:
 
-* Detects risky behaviour proactively
-* Intervenes before harmful financial decisions occur
-* Automatically rebuilds financial stability
-* Reinforces positive financial habits continuously
+- Detects risky behaviour proactively
+- Intervenes before harmful financial decisions occur
+- Automatically rebuilds financial stability
+- Reinforces positive financial habits continuously
 
 GX Prism focuses on prevention, recovery, and behavioural change rather than simple transaction tracking.
 

@@ -19,7 +19,9 @@ function isActive(pathname: string, to: string) {
 export function PhoneShell({ children }: { children: ReactNode }) {
   const loc = useLocation();
   const init = useTheme((s) => s.init);
-  useEffect(() => { init(); }, [init]);
+  useEffect(() => {
+    init();
+  }, [init]);
 
   return (
     <div className="min-h-screen flex items-stretch md:items-center justify-center md:py-8">

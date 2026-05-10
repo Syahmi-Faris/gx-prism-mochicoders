@@ -18,12 +18,20 @@ export const useTheme = create<ThemeState>((set) => ({
     set((s) => {
       const next = s.theme === "light" ? "dark" : "light";
       apply(next);
-      try { localStorage.setItem("gx-theme", next); } catch {}
+      try {
+        localStorage.setItem("gx-theme", next);
+      } catch {
+        void 0;
+      }
       return { theme: next };
     }),
   set: (t) => {
     apply(t);
-    try { localStorage.setItem("gx-theme", t); } catch {}
+    try {
+      localStorage.setItem("gx-theme", t);
+    } catch {
+      void 0;
+    }
     set({ theme: t });
   },
   init: () => {
@@ -32,7 +40,9 @@ export const useTheme = create<ThemeState>((set) => ({
     try {
       const stored = localStorage.getItem("gx-theme");
       if (stored === "dark" || stored === "light") t = stored;
-    } catch {}
+    } catch {
+      void 0;
+    }
     apply(t);
     set({ theme: t });
   },
