@@ -88,13 +88,17 @@ function Insights() {
                 tickLine={false}
               />
               <Tooltip
-                cursor={{ fill: "rgba(255,255,255,0.05)" }}
+                cursor={{ fill: "rgba(0,0,0,0.04)" }}
                 contentStyle={{
-                  background: "oklch(0.21 0.035 280)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  background: "#ffffff",
+                  border: "1px solid rgba(0,0,0,0.08)",
                   borderRadius: 8,
                   fontSize: 12,
+                  color: "oklch(0.21 0.035 280)",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
                 }}
+                labelStyle={{ color: "oklch(0.21 0.035 280)", fontWeight: 600 }}
+                itemStyle={{ color: "oklch(0.21 0.035 280)" }}
               />
               <Bar dataKey="value" radius={[6, 6, 0, 0]}>
                 {week.map((d, i) => (

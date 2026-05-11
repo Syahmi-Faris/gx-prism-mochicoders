@@ -21,6 +21,7 @@ import {
   Target,
   TrendingUp,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { useApp } from "@/lib/store";
 import { toast } from "sonner";
 
