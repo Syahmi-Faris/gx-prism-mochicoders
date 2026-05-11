@@ -1,3 +1,7 @@
+## 🚀 Live Prototype
+🔗 **GX Prism Prototype:**  
+[GX Prism](https://gx-prism-mochicoders.lovable.app)
+
 # ✨ GX Prism
 
 > **An AI-powered financial resilience ecosystem for Malaysian youth**
