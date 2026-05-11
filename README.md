@@ -2,6 +2,9 @@
 🔗 **GX Prism Prototype:**  
 [GX Prism](https://gx-prism-mochicoders.lovable.app)
 
+## 🔗 **GX Prism Presentation Video**  
+[Presentation Video](https://www.youtube.com/watch?v=D30578jDg3s)
+
 # ✨ GX Prism
 
 > **An AI-powered financial resilience ecosystem for Malaysian youth**
