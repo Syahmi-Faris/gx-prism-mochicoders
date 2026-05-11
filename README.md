@@ -3,7 +3,7 @@
 [GX Prism](https://gx-prism-mochicoders.lovable.app)
 
 ## 🔗 **GX Prism Presentation Video**  
-[Presentation Video](https://www.youtube.com/watch?v=D30578jDg3s)
+[Presentation Video](https://www.youtube.com/watch?v=7e-i5CW_BvQ)
 
 # ✨ GX Prism
 
