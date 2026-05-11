@@ -233,30 +233,19 @@ function BnplInterceptModal({ onClose }: { onClose: () => void }) {
 
             <div className="rounded-2xl bg-primary/5 border border-primary/20 p-3">
               <p className="text-[13px] leading-snug">
-                This was originally an <span className="font-semibold">impulse purchase</span>. Do
-                you still want to pay now, or redirect <span className="font-semibold">RM 89</span>{" "}
-                to your Recovery Pocket and delay payment?
+                This was originally an <span className="font-semibold">impulse purchase</span>. The
+                BNPL contract is locked in — pay <span className="font-semibold">RM 89</span> now
+                and mirror the same amount into your Recovery Pocket to rebuild the buffer this
+                purchase used.
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-2">
-              <Button
-                onClick={handlePay}
-                className="h-11 rounded-xl bg-accent text-foreground border-0 hover:bg-accent/80"
-              >
-                Pay Anyway
-              </Button>
-              <Button
-                onClick={handleDelay}
-                className="h-11 rounded-xl bg-amber/15 text-amber border-0 hover:bg-amber/20"
-              >
-                Delay 24h
-              </Button>
+            <div className="grid grid-cols-1 gap-2">
               <Button
                 onClick={handleSave}
                 className="h-11 rounded-xl gradient-prism text-primary-foreground border-0"
               >
-                Save to Recovery
+                Pay and Save
               </Button>
             </div>
           </div>
